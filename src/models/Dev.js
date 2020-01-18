@@ -5,7 +5,7 @@ const devSchhema = new mongoose.Schema({
     github_username: String,
     biografia : String,
     avatarUrl : String,
-    techs: [Strings],
+    techs: [String],
 
 });
-module.exports = mongoose.model('Devs',Schema)
+module.exports = mongoose.model('Dev',devSchhema)

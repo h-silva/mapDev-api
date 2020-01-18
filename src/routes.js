@@ -9,9 +9,11 @@ routes.post('/devs', async (request, response) => {
     const apiResponse = await axios.get(`https://api.github.com/users/${github_username}`);
 
     const { name = login, avatar_url, bio } = apiResponse.data;
+
     const techArray = techs.split(',').map(tech => tech.trim());
-    console.log(apiResponse.data);
-    return response.json({message:'Hello World'});
+
+    await Devs.create({github_username, name, avatar_url, bio, techs : techArray});
+    return response.json(Devs);
 });
 
 module.exports = routes;
